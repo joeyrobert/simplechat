@@ -1,0 +1,33 @@
+.header {
+	margin-top: 0;
+}
+.user_info {
+	right: 0;
+	top: 0;
+	position: fixed;
+	line-height: 39px;
+}
+.chatbox {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 25px;
+}
+.chatbox input.message_box {
+	width: 80%;
+	height: 25px;
+}
+.chatbox input.message_submit {
+	width: 19%;
+	height: 25px;
+}
+
+.message_list {
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 45px;
+	bottom: 30px;
+	overflow: auto;
+}

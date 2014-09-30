@@ -1,0 +1,34 @@
+<div ng-app="SimpleChat">
+
+  <h1 class="header">Simple Chat</h1>
+
+  <div ng-controller="ChatController">
+    <div ng-if="!data.name">
+      <form>
+        <h4>What is your name? <small>Max 10 characters.</small></h4>
+        <input type="text" placeholder="Name" ng-model="chatName" maxlength="10">
+        <input type="submit" value="Submit" ng-click="setName(chatName)">
+      </form>
+    </div>
+
+    <div ng-if="data.name" class="user_info">
+      <strong>{{data.name | sanitize}}</strong>. <a ng-click="clearName()">Signout?</a>
+    </div>
+
+
+    <div ng-if="data.name" class="message_list">
+      <div ng-repeat="message in data.messages.slice(data.messages.length - messageLimit, data.messages.length)" class="message">
+        <div>
+          [{{message.time|timestampToTime}}] &lt;<strong>{{message.name | sanitize}}</strong>&gt; <small>({{message.user_id.slice(0, 8)}}</small>): {{message.message | sanitize}}
+        </div>
+      </div>
+    </div>
+
+    <form ng-if="data.name" class="chatbox">
+      <input type="text" placeholder="What do you want to say?" class="message_box" ng-model="data.message" maxlength="1000">
+      <input type="submit" value="Submit" class="message_submit" ng-click="submitMessage()">
+    </form>
+
+  </div>
+
+</div>
