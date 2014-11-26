@@ -67,14 +67,14 @@ function ChatController($scope, $http, $q, MessageService) {
 			MessageService.submitMessage($scope.data.name, $scope.data.message).then(function() {
 				$scope.getMessages();
 				$scope.data.message = '';
-			});	
+			});
 		}
 	};
 
 	$scope.pollInterval = function() {
 		$scope.pollIntervalId = setInterval(function() {
 			$scope.getMessages();
-		}, 3000);
+		}, 1000);
 
 		$scope.getMessages();
 	};
@@ -101,7 +101,7 @@ function ChatController($scope, $http, $q, MessageService) {
 		}, 50);
 	};
 
-	/* After methods have been defined */	
+	/* After methods have been defined */
 	$scope.data.name = $.cookie('simplechat_name');
 
 	if(!$scope.data.name) {

@@ -1,10 +1,14 @@
-require 'rubygems'
 require 'digest/md5'
 require 'sinatra'
 require 'thread'
 require 'json'
 
 CHATLOG = 'simplechat.json'
+
+def touch_chatlog
+  save_messages([])
+end
+
 $json_mutex = Mutex.new
 $read_write_mutex = Mutex.new
 
@@ -63,4 +67,9 @@ end
 get '/simplechat.json' do
 	headers 'Content-Type' => 'application/json'
 	{'messages' => get_messages}.to_json
+end
+
+# On launch, touch CHATLOG if it does not exist
+unless File.exist?(CHATLOG)
+  touch_chatlog
 end
